@@ -1,14 +1,27 @@
 import Link from 'next/link'
-import WithApollo from '../lib/with-apollo'
-import Name from '../components/Name'
+import dynamic from 'next/dynamic'
+import client from "../lib/with-apollo"
+import { ApolloProvider} from '@apollo/client'
 
-const Page = () => (
-  <div>
-    Welcome, <Name />
-    <br/><br/>
-    <Link href="/about"><a>About</a></Link>
+const Details = dynamic(() => import('../components/details'), {
+  loading: () => <p>Loading...</p>,
+})
 
-  </div>
-)
+const Page = () => {
+  return (
+    <ApolloProvider client={client}>
+      <div>
+        Welcome,
+        <br /><br />
+        <Link href="/about"><a>About</a></Link>
+        <br /><br />
+        <Link href="/user"><a>User Details</a></Link>
+       
+      </div>
+    </ApolloProvider>
+  )
+}
 
-export default WithApollo(Page)
+
+
+export default Page

@@ -1,10 +1,14 @@
-import { withData } from 'next-apollo'
-import { HttpLink } from 'apollo-link-http'
+import { HttpLink, ApolloClient, InMemoryCache } from '@apollo/client';
+import fetch from 'cross-fetch';
 
-const apolloConfig = {
+const client = new ApolloClient({
   link: new HttpLink({
-    uri: 'https://faker-graphql.now.sh/graphql'
-  })
-}
+      uri: process.env.API || 'http://localhost:5002/graphql',
+      fetch,
+  }),
+  cache: new InMemoryCache(),
+});
 
-export default withData(apolloConfig)
+
+export default client
+
