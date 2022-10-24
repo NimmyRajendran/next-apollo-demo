@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build", 
     "start": "npm start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "test": "jest",
+    "test:watchAll": "jest --watchAll --coverage"
   },
   "license": "MIT",
   "dependencies": {
@@ -15,11 +17,14 @@
     "next": "10.0.7",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "cross-fetch": "^3.1.5"
+    "cross-fetch": "^3.1.5",
+    "jest": "^27.5.1"
   },
   "devDependencies": {
     "@testing-library/dom": "^8.13.0",
-    "@testing-library/jest-dom": "^5.16.4"
+    "@testing-library/jest-dom": "^5.16.4",
+    "@testing-library/user-event": "12.7.3",
+    "@testing-library/react": "^12.1.5"
   }
 }
 
